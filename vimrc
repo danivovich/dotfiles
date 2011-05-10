@@ -14,9 +14,11 @@ colorscheme solarized
 
 set foldlevel=1
 
-" colorscheme enzyme
-
 let mapleader = ","
+
+set nocompatible
+
+runtime macros/matchit.vim
 
 " NERDTree Setup
 map <leader>t :NERDTree<CR>
