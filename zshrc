@@ -1,10 +1,17 @@
 # Where Am I?
 platform='unknown'
 unamestr=`uname`
+hoststr=`hostname`
 if [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
   plugins=(git github textmate rails ruby osx)
+
   export ZSH_THEME="robbyrussell" # tell which system I'm on with a different theme
+
+  if [[ "$hoststr" == 'rohn.local' ]]; then
+    export ZSH_THEME="arrow" # tell which system I'm on with a different theme
+  fi
+
 elif [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
   plugins=(git github rails ruby)
@@ -37,6 +44,7 @@ if [[ "$unamestr" == 'Darwin' ]]; then
 elif [[ "$unamestr" == 'Linux' ]]; then
   export EDITOR="vim"
 fi
+
 export PAGER="less"
 
 #
