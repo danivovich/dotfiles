@@ -1,0 +1,11 @@
+startup_message off
+
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+
+screen 0 zsh
+screen 1 zsh
+
+autodetach on
+defscrollback 65000
+

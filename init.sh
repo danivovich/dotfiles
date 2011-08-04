@@ -16,6 +16,11 @@ if [ ! -e ~/.gemrc ]; then
   ln -s ~/.my_config/gemrc ~/.gemrc
 fi
 
+# screenrc
+if [ ! -e ~/.screenrc ]; then
+  ln -s ~/.my_config/screenrc ~/.screenrc
+fi
+
 # Submodules
 git submodule init
 git submodule update
