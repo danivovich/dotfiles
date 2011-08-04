@@ -37,6 +37,12 @@ set foldcolumn=0      "little space on the left.
 set softtabstop=2
 set ai                "auto indent
 
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+map <leader><space> :noh<CR>
 
 " Map a shortcut to close a buffer
 map <leader>. :BW<CR>
