@@ -100,3 +100,7 @@ autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.r
 autocmd User Rails Rnavcommand feature features -suffix=.feature -default=cucumber
 autocmd User Rails Rnavcommand support spec/support features/support -default=env
 
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
