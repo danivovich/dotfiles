@@ -37,6 +37,13 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 #------------------------------
+# Settings
+#------------------------------
+
+zstyle ":completion:*:commands" rehash 1
+
+
+#------------------------------
 # Variables
 #------------------------------
 if [[ "$unamestr" == 'Darwin' ]]; then
