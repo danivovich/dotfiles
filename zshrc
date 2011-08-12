@@ -4,7 +4,7 @@ unamestr=`uname`
 hoststr=`hostname`
 if [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
-  plugins=(git github textmate rails ruby osx)
+  plugins=(brew bundler gem git github rails rails3 ruby rvm osx vagrant)
 
   export ZSH_THEME="robbyrussell" # tell which system I'm on with a different theme
 
@@ -14,7 +14,7 @@ if [[ "$unamestr" == 'Darwin' ]]; then
 
 elif [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
-  plugins=(git github rails ruby)
+  plugins=(bundler gem git github rails rails3 ruby rvm)
   export ZSH_THEME="cloud" # tell which system I'm on with a different theme
 fi
 
