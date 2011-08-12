@@ -1,0 +1,22 @@
+[github]
+	user = 
+	token = 
+[user]
+	name = 
+	email = 
+[color]
+	ui = true
+[alias]
+	stache = stash
+	st = status
+	ci = commit
+	com = commit
+	co = checkout
+	br = branch
+	lol = log --pretty=oneline --abbrev-commit --graph --decorate
+[core]
+	editor = vim 
+	excludesfile = 
+	quotepath = false
+[merge]
+	tool = 
