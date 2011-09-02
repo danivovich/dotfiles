@@ -100,6 +100,22 @@ autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.r
 autocmd User Rails Rnavcommand feature features -suffix=.feature -default=cucumber
 autocmd User Rails Rnavcommand support spec/support features/support -default=env
 
+" whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
+set list
+set listchars=tab:\ \ ,trail:*
+function! <SID>StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+nmap <silent> <Leader>w :call <SID>StripTrailingWhitespace()<CR>
+
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
