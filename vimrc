@@ -26,6 +26,10 @@ map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 map <leader>n :CommandT<CR>
 
+" gundo config
+nnoremap <leader>k :GundoToggle<CR>
+let g:gundo_preview_height = 30
+
 " don't leave backup files scattered about.
 set updatecount=0
 set nobackup
