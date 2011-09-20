@@ -17,6 +17,11 @@ set foldlevel=1
 let mapleader = ","
 
 set nocompatible
+set encoding=utf-8
+
+" Tab completion
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 
 runtime macros/matchit.vim
 
@@ -25,6 +30,7 @@ map <leader>t :NERDTree<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 map <leader>n :CommandT<CR>
+map <leader>r :RN<CR>
 
 " gundo config
 nnoremap <leader>k :GundoToggle<CR>
@@ -70,16 +76,24 @@ map <c-h> <c-w>h
 filetype plugin indent on
 let clj_highlight_builtins = 1
 
+au FileType make set noexpandtab
+
 " json syntax
 au BufRead,BufNewFile *.json set filetype=json
 
+function s:setupWrapping()
+  set formatoptions+=aw
+  set textwidth=80
+  set spell
+endfunction
+
 " options for test and markdown files
-au BufRead,BufNewFile *.txt set formatoptions+=aw
-au BufRead,BufNewFile *.txt set textwidth=80
-au BufRead,BufNewFile *.txt set spell
-au BufRead,BufNewFile *.md set formatoptions+=aw
-au BufRead,BufNewFile *.md set textwidth=80
-au BufRead,BufNewFile *.md set spell
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupWrapping()
+au BufRead,BufNewFile *.{txt} call s:setupWrapping()
+
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
 " Super nice pipe alignment while defining cucumber tables
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -94,7 +108,7 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
- 
+
 " Custom stuff for Rails.vim 
 autocmd User Rails Rnavcommand uploader app/uploaders -suffix=_uploader.rb -default=model()
 autocmd User Rails Rnavcommand steps features/step_definitions -suffix=_steps.rb -default=web
@@ -106,7 +120,7 @@ autocmd User Rails Rnavcommand support spec/support features/support -default=en
 
 " whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 set list
-set listchars=tab:\ \ ,trail:*
+set listchars=tab:\ \ ,trail:·
 function! <SID>StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
     let _s=@/
@@ -119,6 +133,10 @@ function! <SID>StripTrailingWhitespace()
     call cursor(l, c)
 endfunction
 nmap <silent> <Leader>w :call <SID>StripTrailingWhitespace()<CR>
+
+" Enable syntastic syntax checking
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
