@@ -30,10 +30,10 @@ map <leader>t :NERDTree<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 map <leader>n :CommandT<CR>
-map <leader>r :RN<CR>
+map <leader>l :RN<CR>
 
 " gundo config
-nnoremap <leader>k :GundoToggle<CR>
+nnoremap <leader>r :GundoToggle<CR>
 let g:gundo_preview_height = 30
 
 " don't leave backup files scattered about.
@@ -55,7 +55,7 @@ set smartcase
 map <leader><space> :noh<CR>
 
 " Map a shortcut to close a buffer
-map <leader>. :BW<CR>
+map <leader>. :bd<CR>
 
 " Shortcut for viewing open buffers
 map <leader>m :BufExplorer<CR>
