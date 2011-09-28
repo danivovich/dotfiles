@@ -48,6 +48,7 @@ zstyle ":completion:*:commands" rehash 1
 #------------------------------
 if [[ "$unamestr" == 'Darwin' ]]; then
   export EDITOR="mvim"
+  alias vim='mvim -v'
 elif [[ "$unamestr" == 'Linux' ]]; then
   export EDITOR="vim"
 fi
