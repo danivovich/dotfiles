@@ -118,6 +118,9 @@ autocmd User Rails Rnavcommand factory spec/factories -suffix=_factory.rb -defau
 autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
 autocmd User Rails Rnavcommand feature features -suffix=.feature -default=cucumber
 autocmd User Rails Rnavcommand support spec/support features/support -default=env
+autocmd User Rails Rnavcommand report app/reports
+autocmd User Rails Rnavcommand import app/importers
+autocmd User Rails Rnavcommand export app/exporters
 
 " whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 set list
