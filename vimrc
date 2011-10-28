@@ -29,7 +29,8 @@ runtime macros/matchit.vim
 map <leader>t :NERDTree<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-map <leader>n :CommandT<CR>
+map <leader>f :CommandT<CR>
+map <leader>b :CommandTBuffer<CR>
 map <leader>l :RN<CR>
 
 " gundo config
