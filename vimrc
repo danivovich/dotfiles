@@ -92,7 +92,7 @@ endfunction
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupWrapping()
 au BufRead,BufNewFile *.{txt} call s:setupWrapping()
 
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,Guardfile} set ft=ruby
 
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
