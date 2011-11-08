@@ -21,6 +21,11 @@ if [ ! -e ~/.screenrc ]; then
   ln -s ~/.my_config/screenrc ~/.screenrc
 fi
 
+# tmux
+if [ ! -e ~/.tmux.conf ]; then
+  ln -s ~/.my_config/tmux.conf ~/.tmux.conf
+fi
+
 # Submodules
 git submodule init
 git submodule update
