@@ -37,6 +37,9 @@ map <leader>l :RN<CR>
 nnoremap <leader>r :GundoToggle<CR>
 let g:gundo_preview_height = 30
 
+" yankrink config
+nnoremap <leader>y :YRShow<CR>
+
 " don't leave backup files scattered about.
 set updatecount=0
 set nobackup
