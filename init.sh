@@ -26,6 +26,11 @@ if [ ! -e ~/.tmux.conf ]; then
   ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 fi
 
+# ackrc
+if [ ! -e ~/.ackrc.conf ]; then
+  ln -s ~/.dotfiles/ackrc ~/.ackrc
+fi
+
 # Submodules
 git submodule init
 git submodule update
