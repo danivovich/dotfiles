@@ -27,7 +27,7 @@ if [ ! -e ~/.tmux.conf ]; then
 fi
 
 # ackrc
-if [ ! -e ~/.ackrc.conf ]; then
+if [ ! -e ~/.ackrc ]; then
   ln -s ~/.dotfiles/ackrc ~/.ackrc
 fi
 
