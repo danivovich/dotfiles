@@ -1,5 +1,5 @@
 Installation:
-    git clone git://github.com/danivovich/my_config.git ~/.my_config
-    cd ~/.my_config
+    git clone git://github.com/danivovich/dotfiles.git ~/.dotfiles
+    cd ~/.dotfiles
     ./init.sh
 

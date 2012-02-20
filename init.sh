@@ -2,28 +2,28 @@
 
 # vim
 if [ ! -e ~/.vim ]; then
-  ln -s ~/.my_config/vim ~/.vim
+  ln -s ~/.dotfiles/vim ~/.vim
 fi 
 if [ ! -e ~/.vimrc ]; then
-  ln -s ~/.my_config/vimrc ~/.vimrc
+  ln -s ~/.dotfiles/vimrc ~/.vimrc
 fi
 if [ ! -e ~/.gvimrc ]; then
-  ln -s ~/.my_config/gvimrc ~/.gvimrc
+  ln -s ~/.dotfiles/gvimrc ~/.gvimrc
 fi
 
 # gemrc
 if [ ! -e ~/.gemrc ]; then
-  ln -s ~/.my_config/gemrc ~/.gemrc
+  ln -s ~/.dotfiles/gemrc ~/.gemrc
 fi
 
 # screenrc
 if [ ! -e ~/.screenrc ]; then
-  ln -s ~/.my_config/screenrc ~/.screenrc
+  ln -s ~/.dotfiles/screenrc ~/.screenrc
 fi
 
 # tmux
 if [ ! -e ~/.tmux.conf ]; then
-  ln -s ~/.my_config/tmux.conf ~/.tmux.conf
+  ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 fi
 
 # Submodules
@@ -32,14 +32,14 @@ git submodule update
 
 # oh-my-zsh
 if [ ! -e ~/.oh-my-zsh ]; then
-  ln -s ~/.my_config/oh-my-zsh ~/.oh-my-zsh
+  ln -s ~/.dotfiles/oh-my-zsh ~/.oh-my-zsh
 fi
 
 if [ ! -e ~/.zshrc ]; then
-  ln -s ~/.my_config/zshrc ~/.zshrc
+  ln -s ~/.dotfiles/zshrc ~/.zshrc
 fi
 
-if [ ! -e ~/.my_config/vim/bundle/command-t/ruby/command-t/ext.so ]; then
+if [ ! -e ~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.so ]; then
   if [ -e ~/.rvm/bin/rvm ]; then
     rubyv=`type -P ruby`
     if [ $rubyv != '/usr/bin/ruby' ]; then
@@ -54,6 +54,6 @@ if [ ! -e ~/.my_config/vim/bundle/command-t/ruby/command-t/ext.so ]; then
     fi
   fi
 
-  cd ~/.my_config/vim/bundle/command-t/
+  cd ~/.dotfiles/vim/bundle/command-t/
   rake make
 fi
