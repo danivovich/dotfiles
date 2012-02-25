@@ -1,5 +1,17 @@
---type-set=haml=.haml
---type-set=sass=.sass,.scss
---type-set=cucumber=.feature
+# lexically sort filenames
+--sort-files
+
+# Add some extensions
+--type-add=ruby=rake,haml
+--type-add=vim=vimrc
+--type-add=js=json
 --type-add=ruby=Gemfile
+--type-add=css=sass
+
+# Add some new types
+--type-set=cucumber=feature
+--type-set=MARKDOWN=md,mkd,markdown
+--type-set=RDOC=rdoc
+
+# Ignore any rsync cache from cached capistrano deploying
 --ignore-dir=.rsync_cache
