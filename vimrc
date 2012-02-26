@@ -1,5 +1,8 @@
 call pathogen#runtime_append_all_bundles()
 
+set nocompatible
+set encoding=utf-8
+
 set tabstop=2
 set smarttab
 set shiftwidth=2
@@ -11,34 +14,6 @@ set number
 syntax enable
 set background=dark
 colorscheme solarized
-
-set foldlevel=1
-
-let mapleader = ","
-
-set nocompatible
-set encoding=utf-8
-
-" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
-
-runtime macros/matchit.vim
-
-" NERDTree Setup
-map <leader>t :NERDTree<CR>
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-
-map <leader>f :CommandT<CR>
-map <leader>b :CommandTBuffer<CR>
-map <leader>l :RN<CR>
-
-" gundo config
-nnoremap <leader>r :GundoToggle<CR>
-let g:gundo_preview_height = 30
-
-" yankrink config
-nnoremap <leader>y :YRShow<CR>
 
 " don't leave backup files scattered about.
 set updatecount=0
@@ -55,8 +30,48 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set foldlevel=1
 
-map <leader><space> :noh<CR>
+runtime macros/matchit.vim
+
+command! W :w
+
+let mapleader = ","
+
+" fast nav
+map <leader>j 15j<CR>
+map <leader>k 15k<CR>
+
+" Tab completion
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+
+" NERDTree Setup
+map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
+
+" CommandT
+map <leader>f :CommandT<CR>
+map <leader>b :CommandTBuffer<CR>
+let g:CommandTMaxHeight = 10
+
+" gundo config
+nnoremap <leader>r :GundoToggle<CR>
+let g:gundo_preview_height = 30
+
+" yankrink config
+nnoremap <leader>y :YRShow<CR>
+
+" Map ,e and ,v to open files in the same directory as the current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+" ways to clear the search highlighting
+map <leader><space> :nohlsearch<CR>
+nnoremap <CR> :nohlsearch<CR>
+
+" fast switching between two recent buffers
+nnoremap <leader><leader> <C-^>
 
 " Map a shortcut to close a buffer
 map <leader>. :bd<CR>
@@ -64,7 +79,11 @@ map <leader>. :bd<CR>
 " Shortcut for viewing open buffers
 map <leader>m :BufExplorer<CR>
 
-let g:CommandTMaxHeight = 10
+" set window sizes for splits
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
 
 " use ,v to make a new vertical split, ,s for horiz, ,x to close a split
 noremap <leader>v <c-w>v<c-w>l
@@ -113,7 +132,7 @@ function! s:align()
   endif
 endfunction
 
-" Custom stuff for Rails.vim 
+" Custom stuff for Rails.vim
 autocmd User Rails Rnavcommand uploader app/uploaders -suffix=_uploader.rb -default=model()
 autocmd User Rails Rnavcommand steps features/step_definitions -suffix=_steps.rb -default=web
 autocmd User Rails Rnavcommand blueprint spec/blueprints -suffix=_blueprint.rb -default=model()
