@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # vim
 if [ ! -e ~/.vim ]; then
@@ -32,8 +32,11 @@ if [ ! -e ~/.ackrc ]; then
 fi
 
 # Submodules
-git submodule init
-git submodule update
+git submodule status | grep '^\-.*'
+if [ "$?" = "0" ]; then
+  git submodule init
+  git submodule update
+fi
 
 # oh-my-zsh
 if [ ! -e ~/.oh-my-zsh ]; then
@@ -44,7 +47,18 @@ if [ ! -e ~/.zshrc ]; then
   ln -s ~/.dotfiles/zshrc ~/.zshrc
 fi
 
-if [ ! -e ~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.so ]; then
+cd ~/.dotfiles/zsh_custom_plugins
+for plugin_dir in *
+do
+  mkdir -p ~/.dotfiles/oh-my-zsh/custom/plugins
+  if [ -e ~/.dotfiles/oh-my-zsh/custom/plugins/$plugin_dir ]; then
+    ln -s ~/.dotfiles/zsh_custom_plugins/$plugin_dir ~/.dotfiles/oh-my-zsh/custom/plugins/$plugin_dir
+  fi
+done
+
+cd ~/.dotfiles
+
+if [ ! -e ~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.bundle ]; then
   if [ -e ~/.rvm/bin/rvm ]; then
     rubyv=`type -P ruby`
     if [ $rubyv != '/usr/bin/ruby' ]; then
