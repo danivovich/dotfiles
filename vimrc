@@ -68,7 +68,6 @@ map <leader>v :view %%
 
 " ways to clear the search highlighting
 map <leader><space> :nohlsearch<CR>
-nnoremap <CR> :nohlsearch<CR>
 
 " fast switching between two recent buffers
 nnoremap <leader><leader> <C-^>
