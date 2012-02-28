@@ -192,11 +192,9 @@ function! RunNearestTest()
   call RunTestFile(":" . spec_line_number . " -b")
 endfunction
 
-map <leader>t :call RunTestFile()<cr>
-map <leader>T :call RunNearestTest()<cr>
+map <leader>u :call RunTestFile()<cr>
+map <leader>U :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
-map <leader>c :w\|:!cucumber <cr>
-map <leader>w :w\|:!cucumber --profile wip<cr>
 
 " whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 set list
