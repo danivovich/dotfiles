@@ -47,6 +47,10 @@ if [ ! -e ~/.zshrc ]; then
   ln -s ~/.dotfiles/zshrc ~/.zshrc
 fi
 
+if [ ! -e ~/.zshenv ]; then
+  ln -s ~/.dotfiles/zshenv ~/.zshenv
+fi
+
 cd ~/.dotfiles/zsh_custom_plugins
 for plugin_dir in *
 do

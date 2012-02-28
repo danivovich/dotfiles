@@ -143,19 +143,74 @@ autocmd User Rails Rnavcommand report app/reports
 autocmd User Rails Rnavcommand import app/importers
 autocmd User Rails Rnavcommand export app/exporters
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Running tests
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! RunTests(filename)
+  " Write the file and run tests for the given filename
+  :w
+  if match(a:filename, '\.feature$') != -1
+    if filereadable("Gemfile")
+      exec ":!bundle exec cucumber " . a:filename
+    else
+      exec ":!cucumber " . a:filename
+    end
+  else
+    if filereadable("Gemfile")
+      exec ":!bundle exec rspec --color " . a:filename
+    else
+      exec ":!rspec --color " . a:filename
+    end
+  end
+endfunction
+
+function! SetTestFile()
+  " Set the spec file that tests will be run for.
+  let t:grb_test_file=@%
+endfunction
+
+function! RunTestFile(...)
+  if a:0
+    let command_suffix = a:1
+  else
+    let command_suffix = ""
+  endif
+
+  " Run the tests for the previously-marked file.
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\)$') != -1
+  if in_test_file
+    call SetTestFile()
+  elseif !exists("t:grb_test_file")
+    return
+  end
+  call RunTests(t:grb_test_file . command_suffix)
+endfunction
+
+function! RunNearestTest()
+  let spec_line_number = line('.')
+  call RunTestFile(":" . spec_line_number . " -b")
+endfunction
+
+map <leader>t :call RunTestFile()<cr>
+map <leader>T :call RunNearestTest()<cr>
+map <leader>a :call RunTests('')<cr>
+map <leader>c :w\|:!cucumber <cr>
+map <leader>w :w\|:!cucumber --profile wip<cr>
+
 " whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 set list
 set listchars=tab:\ \ ,trail:·
 function! <SID>StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 nmap <silent> <Leader>w :call <SID>StripTrailingWhitespace()<CR>
 

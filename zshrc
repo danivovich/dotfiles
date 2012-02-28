@@ -4,8 +4,6 @@ unamestr=`uname`
 hoststr=`hostname`
 if [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
-  plugins=(brew bundler gem git github rails rails3 ruby rvm osx vagrant code_cd)
-
   export ZSH_THEME="robbyrussell" # tell which system I'm on with a different theme
 
   if [[ "$hoststr" == 'rohn.local' ]]; then
@@ -14,9 +12,10 @@ if [[ "$unamestr" == 'Darwin' ]]; then
 
 elif [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
-  plugins=(bundler gem git github rails rails3 ruby rvm code_cd)
   export ZSH_THEME="cloud" # tell which system I'm on with a different theme
 fi
+
+plugins=(git code_cd)
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
@@ -68,9 +67,4 @@ export PAGER="less"
 if [[ -r "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
 fi
-
-#------------------------------
-# RVM
-#------------------------------
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
