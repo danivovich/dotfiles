@@ -28,12 +28,6 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
-[submodule "vim/bundle/vim-vividchalk"]
-	path = vim/bundle/vim-vividchalk
-	url = git://github.com/tpope/vim-vividchalk.git
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
 	url = git://github.com/markabe/bufexplorer.git
@@ -52,15 +46,6 @@
 [submodule "vim/bundle/command-t"]
 	path = vim/bundle/command-t
 	url = git://github.com/wincent/Command-T.git
-[submodule "vim/bundle/vim-matchit"]
-	path = vim/bundle/vim-matchit
-	url = git://github.com/edsono/vim-matchit.git
-[submodule "vim/bundle/vim-textobj-user"]
-	path = vim/bundle/vim-textobj-user
-	url = git://github.com/kana/vim-textobj-user.git
-[submodule "vim/bundle/vim-textobj-rubyblock"]
-	path = vim/bundle/vim-textobj-rubyblock
-	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
 [submodule "vim/bundle/vim-ack"]
 	path = vim/bundle/vim-ack
 	url = git://github.com/mileszs/ack.vim.git
@@ -82,3 +67,6 @@
 [submodule "vim/bundle/tslime"]
 	path = vim/bundle/tslime
 	url = git://github.com/jgdavey/tslime.vim.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git

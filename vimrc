@@ -32,8 +32,6 @@ set ignorecase
 set smartcase
 set foldlevel=1
 
-runtime macros/matchit.vim
-
 command! W :w
 
 let mapleader = ","
