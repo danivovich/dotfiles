@@ -12,6 +12,8 @@
 --type-set=cucumber=feature
 --type-set=MARKDOWN=md,mkd,markdown
 --type-set=RDOC=rdoc
+--type-set=csv=csv
 
 # Ignore any rsync cache from cached capistrano deploying
 --ignore-dir=.rsync_cache
+--ignore-dir=coverage
