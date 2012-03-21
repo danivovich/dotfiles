@@ -19,6 +19,7 @@ colorscheme solarized
 set updatecount=0
 set nobackup
 set nowritebackup
+set noswapfile
 
 set nowrap            "no text wrapping
 set selectmode=key    "shifted arrows for selection
