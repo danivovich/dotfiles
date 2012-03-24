@@ -58,9 +58,6 @@
 [submodule "vim/bundle/vim-slurper"]
 	path = vim/bundle/vim-slurper
 	url = git://github.com/adamlowe/vim-slurper.git
-[submodule "vim/bundle/yankring"]
-	path = vim/bundle/yankring
-	url = git://github.com/vim-scripts/YankRing.vim.git
 [submodule "vim/bundle/vim-turbux"]
 	path = vim/bundle/vim-turbux
 	url = git://github.com/jgdavey/vim-turbux.git
@@ -70,3 +67,6 @@
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/bundle/vim-ruby"]
+	path = vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git

@@ -13,5 +13,3 @@ vnoremap <D-[> <gv
 
 set guifont=Meslo\ LG\ M\ DZ:h10
 
-colorscheme solarized
-

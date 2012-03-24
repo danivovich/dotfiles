@@ -11,7 +11,12 @@ set expandtab
 set hidden
 set cursorline
 set number
+set scrolloff=3
 syntax enable
+set laststatus=2
+"set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline=%<%f\ %h%w%m%r%y%=L:%l/%L\ (%p%%)\ C:%c
+set t_Co=256
 set background=dark
 colorscheme solarized
 
@@ -57,9 +62,6 @@ let g:CommandTMaxHeight = 10
 nnoremap <leader>r :GundoToggle<CR>
 let g:gundo_preview_height = 30
 
-" yankrink config
-nnoremap <leader>y :YRShow<CR>
-
 " Map ,e and ,v to open files in the same directory as the current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
@@ -99,19 +101,6 @@ map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
-
-" Remap the tab key to do autocompletion or indentation depending on the
-" context (from http://www.vim.org/tips/tip.php?tip_id=102)
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
 
 filetype plugin indent on
 let clj_highlight_builtins = 1
