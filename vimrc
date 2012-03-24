@@ -11,7 +11,12 @@ set expandtab
 set hidden
 set cursorline
 set number
+set scrolloff=3
 syntax enable
+set laststatus=2
+"set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+set statusline=%<%f\ %h%w%m%r%y%=L:%l/%L\ (%p%%)\ C:%c
+set t_Co=256
 set background=dark
 colorscheme solarized
 
