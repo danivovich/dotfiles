@@ -58,7 +58,7 @@ export PAGER="less"
 # Aliases
 #------------------------------
 
-
+alias tmux='TERM=screen-256color-bce tmux -S /tmp/tmux-sock'
 
 #------------------------------
 # Local settings
