@@ -64,8 +64,8 @@ cd ~/.dotfiles
 
 if [ ! -e ~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.bundle ]; then
   if [ -e ~/.rvm/bin/rvm ]; then
-    rubyv=`type -P ruby`
-    if [ $rubyv != '/usr/bin/ruby' ]; then
+    rubyv=`type -p ruby`
+    if [ $rubyv != 'ruby is /usr/bin/ruby' ]; then
       echo
       echo !!!!!!!!!!!!!!!!!!!!!!!!!!!
       echo
