@@ -2,6 +2,7 @@
 platform='unknown'
 unamestr=`uname`
 hoststr=`hostname`
+me=`whoami`
 if [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
   export ZSH_THEME="robbyrussell" # tell which system I'm on with a different theme
@@ -58,7 +59,7 @@ export PAGER="less"
 # Aliases
 #------------------------------
 
-alias tmux='TERM=screen-256color-bce tmux -S /tmp/tmux-sock'
+alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
 
 #------------------------------
 # Local settings
