@@ -1,0 +1,3 @@
+#!/bin/sh
+rm -f .git/tags
+/usr/local/bin/ctags --tag-relative -Rf.git/tags --exclude=.git --exclude=.rsync_cache --languages=-javascript,sql
