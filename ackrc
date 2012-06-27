@@ -6,7 +6,7 @@
 --type-add=vim=vimrc
 --type-add=js=json
 --type-add=ruby=Gemfile
---type-add=css=sass
+--type-add=css=sass,less
 
 # Add some new types
 --type-set=cucumber=feature
