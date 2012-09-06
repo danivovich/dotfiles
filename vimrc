@@ -79,12 +79,6 @@ map <leader>. :bd<CR>
 " Shortcut for viewing open buffers
 map <leader>m :BufExplorer<CR>
 
-" set window sizes for splits
-set winwidth=84
-set winheight=5
-set winminheight=5
-set winheight=999
-
 " use ,v to make a new vertical split, ,s for horiz, ,x to close a split
 noremap <leader>v <c-w>v<c-w>l
 noremap <leader>s <c-w>s<c-w>j
