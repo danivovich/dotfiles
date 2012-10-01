@@ -42,7 +42,6 @@ source $ZSH/oh-my-zsh.sh
 
 zstyle ":completion:*:commands" rehash 1
 
-
 #------------------------------
 # Variables
 #------------------------------
@@ -62,10 +61,26 @@ export PAGER="less"
 alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
 
 #------------------------------
+# Functions
+#------------------------------
+
+function tmux_running_for_dir() {
+  tmux ls | grep -qi "^$(basename $(pwd)):"
+}
+
+t ()
+{
+  if tmux_running_for_dir; then
+    tmux attach -t $(basename $(pwd))
+  else
+    tmux new -s $(basename $(pwd))
+  fi
+}
+
+#------------------------------
 # Local settings
 #------------------------------
 
 if [[ -r "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
 fi
-
