@@ -64,16 +64,24 @@ alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
 # Functions
 #------------------------------
 
-function tmux_running_for_dir() {
-  tmux ls | grep -qi "^$(basename $(pwd)):"
+tmux_attach_or_create () {
+  if (($# == 1)); then
+    if ((tmux ls | grep -qi "^$1:")); then
+      tmux attach -t $1
+    else
+      tmux new -s $1
+    fi
+  else
+    echo "Must provide a session name"
+  fi
 }
 
 t ()
 {
-  if tmux_running_for_dir; then
-    tmux attach -t $(basename $(pwd))
+  if (($# == 1)); then
+    tmux_attach_or_create $1
   else
-    tmux new -s $(basename $(pwd))
+    tmux_attach_or_create $(basename $(pwd))
   fi
 }
 
