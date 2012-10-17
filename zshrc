@@ -66,11 +66,7 @@ alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
 
 tmux_attach_or_create () {
   if (($# == 1)); then
-    if ((tmux ls | grep -qi "^$1:")); then
-      tmux attach -t $1
-    else
-      tmux new -s $1
-    fi
+    tmux has -t $1 && tmux attach -t $1 || tmux new -s $1
   else
     echo "Must provide a session name"
   fi
@@ -84,6 +80,14 @@ t ()
     tmux_attach_or_create $(basename $(pwd))
   fi
 }
+
+_t() {
+  local line
+  local -a sessions
+  tmux ls | cut -d : -f 1 | while read -A line; do sessions=($line $sessions) done
+  _values $sessions && ret=0
+}
+compdef _t t
 
 #------------------------------
 # Local settings
