@@ -196,6 +196,8 @@ map <leader>u :call RunTestFile()<cr>
 map <leader>U :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
 
+let g:turbux_command_prefix = 'bundle exec' " default: (empty)
+
 " whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 set list
 set listchars=tab:\ \ ,trail:·
