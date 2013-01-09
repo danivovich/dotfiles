@@ -16,7 +16,7 @@ elif [[ "$unamestr" == 'Linux' ]]; then
   export ZSH_THEME="cloud" # tell which system I'm on with a different theme
 fi
 
-plugins=(git code_cd marked_tab)
+plugins=(git bundler rails3 code_cd marked_tab)
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
@@ -63,6 +63,11 @@ alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
 #------------------------------
 # Functions
 #------------------------------
+
+tls ()
+{
+  tmux ls
+}
 
 tmux_attach_or_create () {
   if (($# == 1)); then

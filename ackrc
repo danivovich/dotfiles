@@ -5,6 +5,7 @@
 --type-add=ruby=rake,haml
 --type-add=vim=vimrc
 --type-add=js=json
+--type-add=js=coffee
 --type-add=ruby=Gemfile
 --type-add=css=sass,less
 

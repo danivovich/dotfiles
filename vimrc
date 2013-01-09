@@ -197,6 +197,7 @@ map <leader>U :call RunNearestTest()<cr>
 map <leader>a :call RunTests('')<cr>
 
 let g:turbux_command_prefix = 'bundle exec' " default: (empty)
+nmap <C-c>r <Plug>SetTmuxVars
 
 " whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 set list
