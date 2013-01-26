@@ -111,7 +111,7 @@ function s:setupWrapping()
 endfunction
 
 " options for test and markdown files
-au BufRead,BufNewFile *.{txt} call s:setupWrapping()
+au BufRead,BufNewFile *.{txt,md,markdown} call s:setupWrapping()
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,Guardfile} set ft=ruby
 
