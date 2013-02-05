@@ -1,6 +1,38 @@
-call pathogen#runtime_append_all_bundles()
-
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-haml'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'bufexplorer.zip'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree'
+Bundle 'godlygeek/tabular'
+Bundle 'mileszs/ack.vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'adamlowe/vim-slurper'
+Bundle 'jgdavey/vim-turbux'
+Bundle 'jgdavey/tslime.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'groenewege/vim-less'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'kien/ctrlp.vim'
+
+filetype plugin indent on
+
 set encoding=utf-8
 
 set tabstop=2
@@ -53,10 +85,9 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 " NERDTree Setup
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-" CommandT
-map <leader>f :CommandT<CR>
-map <leader>b :CommandTBuffer<CR>
-let g:CommandTMaxHeight = 10
+" ctrlp.vim
+map <leader>f :CtrlP<CR>
+map <leader>b :CtrlPBuffer<CR>
 
 " gundo config
 nnoremap <leader>r :GundoToggle<CR>
@@ -96,7 +127,6 @@ map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
 
-filetype plugin indent on
 let clj_highlight_builtins = 1
 
 au FileType make set noexpandtab

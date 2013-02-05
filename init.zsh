@@ -60,23 +60,7 @@ do
   fi
 done
 
+
+# Vundle install
 cd ~/.dotfiles
-
-if [ ! -e ~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.bundle ]; then
-  if [ -e ~/.rvm/bin/rvm ]; then
-    rubyv=`type -p ruby`
-    if [ $rubyv != 'ruby is /usr/bin/ruby' ]; then
-      echo
-      echo !!!!!!!!!!!!!!!!!!!!!!!!!!!
-      echo
-      echo rvm is installed, set ruby to system and rerun script!
-      echo
-      echo !!!!!!!!!!!!!!!!!!!!!!!!!!!
-      echo
-      exit
-    fi
-  fi
-
-  cd ~/.dotfiles/vim/bundle/command-t/
-  rake make
-fi
+vim +BundleInstall +qall
