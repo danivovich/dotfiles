@@ -30,6 +30,8 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'groenewege/vim-less'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'kien/ctrlp.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'coderifous/textobj-word-column.vim'
 
 filetype plugin indent on
 
@@ -251,6 +253,9 @@ let g:syntastic_quiet_warnings=1
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': ['cucumber', 'cpp', 'scala'] }
+
+let g:gitgutter_enabled = 0
+map <leader>g :call ToggleGitGutter()<cr>
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
