@@ -3,6 +3,7 @@ platform='unknown'
 unamestr=`uname`
 hoststr=`hostname`
 me=`whoami`
+
 if [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
   export ZSH_THEME="robbyrussell" # tell which system I'm on with a different theme
@@ -10,6 +11,7 @@ if [[ "$unamestr" == 'Darwin' ]]; then
   if [[ "$hoststr" == 'rohn.local' ]]; then
     export ZSH_THEME="arrow" # tell which system I'm on with a different theme
   fi
+
 
 elif [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
@@ -41,6 +43,18 @@ source $ZSH/oh-my-zsh.sh
 #------------------------------
 
 zstyle ":completion:*:commands" rehash 1
+
+`which keychain > /dev/null`
+if [[ $? == 0 ]]; then
+  eval `keychain --eval --agents ssh --inherit any --quiet --quick`
+  function add_all_ssh_keys()
+  {
+    ssh-add $(grep -lR PRIVATE ~/.ssh)
+  }
+  alias ssh="(ssh-add -l > /dev/null || add_all_ssh_keys ) && ssh"
+else
+  echo "Keychain not installed"
+fi
 
 #------------------------------
 # Variables
