@@ -32,6 +32,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'chriskempson/vim-tomorrow-theme'
 
 filetype plugin indent on
 
