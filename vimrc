@@ -33,6 +33,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'tomasr/molokai'
+Bundle 'uggedal/go-vim'
 
 filetype plugin indent on
 
@@ -163,18 +165,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
-
-" Custom stuff for Rails.vim
-autocmd User Rails Rnavcommand uploader app/uploaders -suffix=_uploader.rb -default=model()
-autocmd User Rails Rnavcommand steps features/step_definitions -suffix=_steps.rb -default=web
-autocmd User Rails Rnavcommand blueprint spec/blueprints -suffix=_blueprint.rb -default=model()
-autocmd User Rails Rnavcommand factory spec/factories -suffix=_factory.rb -default=model()
-autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
-autocmd User Rails Rnavcommand feature features -suffix=.feature -default=cucumber
-autocmd User Rails Rnavcommand support spec/support features/support -default=env
-autocmd User Rails Rnavcommand report app/reports
-autocmd User Rails Rnavcommand import app/importers
-autocmd User Rails Rnavcommand export app/exporters
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Running tests
