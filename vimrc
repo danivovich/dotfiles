@@ -4,37 +4,37 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-haml'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'bufexplorer.zip'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-Bundle 'godlygeek/tabular'
-Bundle 'mileszs/ack.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'adamlowe/vim-slurper'
-Bundle 'jgdavey/vim-turbux'
-Bundle 'jgdavey/tslime.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'groenewege/vim-less'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'kien/ctrlp.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'tomasr/molokai'
-Bundle 'uggedal/go-vim'
+Plugin 'gmarik/vundle'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-haml'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'bufexplorer.zip'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'godlygeek/tabular'
+Plugin 'mileszs/ack.vim'
+Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'adamlowe/vim-slurper'
+Plugin 'jgdavey/vim-turbux'
+Plugin 'jgdavey/tslime.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'groenewege/vim-less'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'coderifous/textobj-word-column.vim'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'tomasr/molokai'
+Plugin 'fatih/vim-go'
 
 filetype plugin indent on
 
@@ -240,7 +240,7 @@ nmap <silent> <Leader>w :call <SID>StripTrailingWhitespace()<CR>
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': ['cucumber', 'cpp', 'scala'] }
