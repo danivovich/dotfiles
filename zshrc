@@ -18,7 +18,7 @@ elif [[ "$unamestr" == 'Linux' ]]; then
   export ZSH_THEME="cloud" # tell which system I'm on with a different theme
 fi
 
-plugins=(bundler git rails3 code_cd marked_tab)
+plugins=(bundler git rails code_cd marked_tab)
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
