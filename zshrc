@@ -7,12 +7,6 @@ me=`whoami`
 if [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
   export ZSH_THEME="robbyrussell" # tell which system I'm on with a different theme
-
-  if [[ "$hoststr" == 'rohn.local' ]]; then
-    export ZSH_THEME="arrow" # tell which system I'm on with a different theme
-  fi
-
-
 elif [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
   export ZSH_THEME="cloud" # tell which system I'm on with a different theme
@@ -59,13 +53,8 @@ fi
 #------------------------------
 # Variables
 #------------------------------
-if [[ "$unamestr" == 'Darwin' ]]; then
-  export EDITOR="vim"
-  alias vim='mvim -v'
-elif [[ "$unamestr" == 'Linux' ]]; then
-  export EDITOR="vim"
-fi
 
+export EDITOR="vim"
 export PAGER="less"
 
 #------------------------------
@@ -73,6 +62,11 @@ export PAGER="less"
 #------------------------------
 
 alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
+
+if [[ "$unamestr" == 'Darwin' ]]; then
+  export EDITOR="vim"
+  alias vim='mvim -v'
+fi
 
 #------------------------------
 # Functions
