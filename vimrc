@@ -2,38 +2,55 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
-Plugin 'gmarik/vundle'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kchmck/vim-coffee-script'
+" Vundle setup
+Plugin 'gmarik/Vundle.vim'
+
+" tpope section
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-haml'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'bufexplorer.zip'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'godlygeek/tabular'
-Plugin 'mileszs/ack.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'adamlowe/vim-slurper'
+Plugin 'tpope/vim-endwise'
+
+" testing help
 Plugin 'jgdavey/vim-turbux'
 Plugin 'jgdavey/tslime.vim'
+
+" utils
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'groenewege/vim-less'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'coderifous/textobj-word-column.vim'
+Plugin 'adamlowe/vim-slurper'
+Plugin 'godlygeek/tabular'
+Plugin 'sjl/gundo.vim'
+
+" navigation
+Plugin 'mileszs/ack.vim'
+Plugin 'bufexplorer.zip'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+
+" Themes
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'tomasr/molokai'
+
+" Languages
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/vim-go'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'groenewege/vim-less'
+
+call vundle#end()
 
 filetype plugin indent on
 

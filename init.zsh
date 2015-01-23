@@ -65,5 +65,5 @@ done
 cd ~/.dotfiles
 mv vimrc vimrc.bak
 sed 's/colorscheme solarized/" colorscheme solarized/' vimrc.bak > vimrc
-vim +BundleInstall +qall
+vim +PluginInstall +qall
 mv vimrc.bak vimrc
