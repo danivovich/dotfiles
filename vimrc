@@ -21,7 +21,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'godlygeek/tabular'
 Plugin 'mileszs/ack.vim'
 Plugin 'sjl/gundo.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'adamlowe/vim-slurper'
 Plugin 'jgdavey/vim-turbux'
 Plugin 'jgdavey/tslime.vim'
@@ -237,13 +236,6 @@ function! <SID>StripTrailingWhitespace()
   call cursor(l, c)
 endfunction
 nmap <silent> <Leader>w :call <SID>StripTrailingWhitespace()<CR>
-
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['cucumber', 'cpp', 'scala'] }
 
 let g:gitgutter_enabled = 0
 map <leader>g :call ToggleGitGutter()<cr>
