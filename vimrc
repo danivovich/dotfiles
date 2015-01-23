@@ -7,17 +7,24 @@ call vundle#begin()
 " Vundle setup
 Plugin 'gmarik/Vundle.vim'
 
+" Languages
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'fatih/vim-go'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'groenewege/vim-less'
+
 " tpope section
+Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-cucumber'
 Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
 
 " testing help
 Plugin 'tpope/vim-dispatch'
@@ -36,14 +43,6 @@ Plugin 'kien/ctrlp.vim'
 
 " Themes
 Plugin 'altercation/vim-colors-solarized'
-
-" Languages
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'fatih/vim-go'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'groenewege/vim-less'
 
 call vundle#end()
 
@@ -309,10 +308,62 @@ function! <SID>StripTrailingWhitespace()
 endfunction
 nmap <silent> <Leader>w :call <SID>StripTrailingWhitespace()<CR>
 
-let g:gitgutter_enabled = 0
-map <leader>g :call ToggleGitGutter()<cr>
-
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+let g:rails_projections = {
+      \ "config/projections.json": {
+      \   "command": "projections"
+      \ },
+      \ "spec/features/*_spec.rb": {
+      \   "command": "feature",
+      \   "template": "require 'spec_helper'\n\nfeature '%h' do\n\nend",
+      \ },
+      \ "features/*.feature" : {
+      \   "command" : "feature"
+      \ },
+      \ "features/step_definitions/*_steps.rb" : {
+      \   "command" : "steps"
+      \ },
+      \ "app/uploaders/*_uploader.rb" : {
+      \   "command" : "uploader"
+      \ },
+      \ "app/reports/*.rb" : {
+      \   "command" : "report"
+      \ },
+      \ "app/importers/*.rb" : {
+      \   "command" : "import"
+      \ },
+      \ "app/exporters/*.rb" : {
+      \   "command" : "export"
+      \ },
+      \ "app/jobs/*.rb" : {
+      \   "command" : "worker"
+      \ },
+      \ "app/workers/*.rb" : {
+      \   "command" : "worker"
+      \ },
+      \ "spec/factories/*.rb": {
+      \   "command":   "factory",
+      \   "affinity":  "collection",
+      \   "alternate": "app/models/%i.rb",
+      \   "related":   "db/schema.rb#%s",
+      \   "test":      "spec/models/%i_test.rb",
+      \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
+      \   "keywords":  "factory sequence"
+      \ },
+      \ "spec/factories.rb": {
+      \   "command":   "factory"
+      \ }}
+
+let g:rails_gem_projections = {
+      \ "active_model_serializers": {
+      \   "app/serializers/*_serializer.rb": {
+      \     "command": "serializer",
+      \     "affinity": "model",
+      \     "test": "spec/serializers/%s_spec.rb",
+      \     "related": "app/models/%s.rb",
+      \     "template": "class %SSerializer < ActiveModel::Serializer\nend"
+      \   }
+      \ }}
