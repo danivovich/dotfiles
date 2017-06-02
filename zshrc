@@ -43,7 +43,7 @@ if [[ $? == 0 ]]; then
   eval `keychain --eval --agents ssh --inherit any --quiet --quick`
   function add_all_ssh_keys()
   {
-    ssh-add $(grep -lR PRIVATE ~/.ssh)
+    ssh-add $(grep -l PRIVATE ~/.ssh)
   }
   alias ssh="(ssh-add -l > /dev/null || add_all_ssh_keys ) && ssh"
 else
@@ -56,6 +56,8 @@ fi
 
 export EDITOR="vim"
 export PAGER="less"
+# F@CK Spring
+export DISABLE_SPRING=1
 
 #------------------------------
 # Aliases
@@ -67,6 +69,10 @@ if [[ "$unamestr" == 'Darwin' ]]; then
   export EDITOR="vim"
   alias vim='mvim -v'
 fi
+
+alias iexs='iex -S mix'
+alias bundle='nocorrect bundle'
+alias fs='foreman start'
 
 #------------------------------
 # Functions
@@ -108,4 +114,16 @@ compdef _t t
 
 if [[ -r "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
+fi
+
+
+if [[ -r "$HOME/.asdf/asdf.sh" ]]; then
+  source $HOME/.asdf/asdf.sh
+  source $HOME/.asdf/completions/asdf.bash
+fi
+
+`which yarn > /dev/null`
+if [[ $? == 0 ]]; then
+  export PATH="$HOME/.yarn/bin:$PATH"
+  export PATH="$PATH:`yarn global bin`"
 fi

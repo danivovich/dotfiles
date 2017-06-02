@@ -14,6 +14,11 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'groenewege/vim-less'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'pearofducks/ansible-vim'
+Plugin 'glench/vim-jinja2-syntax'
 
 " tpope section
 Plugin 'tpope/vim-rake'
@@ -34,6 +39,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'coderifous/textobj-word-column.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'sjl/gundo.vim'
+Plugin 'ervandew/supertab'
 
 " navigation
 Plugin 'mileszs/ack.vim'
@@ -64,7 +70,7 @@ set laststatus=2
 "set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 set statusline=%<%f\ %h%w%m%r%y%=L:%l/%L\ (%p%%)\ C:%c
 set t_Co=16
-set background=dark
+set background=light
 colorscheme solarized
 
 " don't leave backup files scattered about.
@@ -161,6 +167,7 @@ au BufRead,BufNewFile *.{txt,md,markdown} call s:setupWrapping()
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,Guardfile} set ft=ruby
 
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+au FileType go set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
 
 " Super nice pipe alignment while defining cucumber tables
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a

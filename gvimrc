@@ -11,5 +11,5 @@ noremap <D-[> <<
 vnoremap <D-]> >gv
 vnoremap <D-[> <gv
 
-set guifont=Meslo\ LG\ M\ DZ:h10
-
+set macligatures
+set guifont=Fira\ Code:h12
