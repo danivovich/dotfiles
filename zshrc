@@ -68,6 +68,7 @@ alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
 if [[ "$unamestr" == 'Darwin' ]]; then
   export EDITOR="vim"
   alias vim='mvim -v'
+  alias view='mvim -v'
 fi
 
 alias iexs='iex -S mix'
@@ -120,10 +121,4 @@ fi
 if [[ -r "$HOME/.asdf/asdf.sh" ]]; then
   source $HOME/.asdf/asdf.sh
   source $HOME/.asdf/completions/asdf.bash
-fi
-
-`which yarn > /dev/null`
-if [[ $? == 0 ]]; then
-  export PATH="$HOME/.yarn/bin:$PATH"
-  export PATH="$PATH:`yarn global bin`"
 fi

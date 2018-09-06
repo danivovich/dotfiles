@@ -1,5 +1,5 @@
 Installation:
     git clone git://github.com/danivovich/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
-    ./init.sh
+    ./init.zsh
 

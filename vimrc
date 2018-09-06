@@ -10,10 +10,8 @@ Plugin 'gmarik/Vundle.vim'
 " Languages
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'fatih/vim-go'
-Plugin 'derekwyatt/vim-scala'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'groenewege/vim-less'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -30,6 +28,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-projectionist'
 
 " testing help
 Plugin 'tpope/vim-dispatch'
@@ -40,6 +39,7 @@ Plugin 'coderifous/textobj-word-column.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'sjl/gundo.vim'
 Plugin 'ervandew/supertab'
+Plugin 'junegunn/fzf'
 
 " navigation
 Plugin 'mileszs/ack.vim'
@@ -162,7 +162,7 @@ function s:setupWrapping()
 endfunction
 
 " options for test and markdown files
-au BufRead,BufNewFile *.{txt,md,markdown} call s:setupWrapping()
+au BufRead,BufNewFile *.{txt} call s:setupWrapping()
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,Guardfile} set ft=ruby
 
