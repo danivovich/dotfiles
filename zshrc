@@ -6,10 +6,13 @@ me=`whoami`
 
 if [[ "$unamestr" == 'Darwin' ]]; then
   platform='mac'
-  export ZSH_THEME="robbyrussell" # tell which system I'm on with a different theme
+  export ZSH_THEME="robbyrussell"
+elif [[ "$hoststr" == 'galena' ]]; then
+  platform='linux'
+  export ZSH_THEME="awesomepanda"
 elif [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
-  export ZSH_THEME="cloud" # tell which system I'm on with a different theme
+  export ZSH_THEME="cloud"
 fi
 
 plugins=(bundler git rails code_cd marked_tab)
@@ -25,6 +28,8 @@ export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
+
+alias millis='python -c "import time; print(int(time.time()*1000))"'
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -113,12 +118,15 @@ compdef _t t
 # Local settings
 #------------------------------
 
+if [[ -r "$HOME/.asdf/asdf.sh" ]]; then
+ source $HOME/.asdf/asdf.sh
+ source $HOME/.asdf/completions/asdf.bash
+fi
+
 if [[ -r "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
 fi
 
-
-if [[ -r "$HOME/.asdf/asdf.sh" ]]; then
-  source $HOME/.asdf/asdf.sh
-  source $HOME/.asdf/completions/asdf.bash
+if [[ -r "$HOME/.fzf.zsh" ]]; then
+  source "$HOME/.fzf.zsh"
 fi
