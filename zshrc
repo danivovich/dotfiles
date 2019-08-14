@@ -9,7 +9,7 @@ if [[ "$unamestr" == 'Darwin' ]]; then
   export ZSH_THEME="robbyrussell"
 elif [[ "$hoststr" == 'galena' ]]; then
   platform='linux'
-  export ZSH_THEME="awesomepanda"
+  export ZSH_THEME="risto"
 elif [[ "$unamestr" == 'Linux' ]]; then
   platform='linux'
   export ZSH_THEME="cloud"
