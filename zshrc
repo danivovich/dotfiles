@@ -61,6 +61,7 @@ fi
 
 export EDITOR="vim"
 export PAGER="less"
+export HISTCONTROL=ignorespace:ignoredups
 # F@CK Spring
 export DISABLE_SPRING=1
 
