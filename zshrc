@@ -115,13 +115,19 @@ _t() {
 }
 compdef _t t
 
+`which thefuck > /dev/null`
+if [[ $? == 0 ]]; then
+  eval $(thefuck --alias)
+fi
+
 #------------------------------
 # Local settings
 #------------------------------
 
 if [[ -r "$HOME/.asdf/asdf.sh" ]]; then
  source $HOME/.asdf/asdf.sh
- source $HOME/.asdf/completions/asdf.bash
+ fpath=(${ASDF_DIR}/completions $fpath)
+ autoload -Uz compinit && compinit
 fi
 
 if [[ -r "$HOME/.zshrc.local" ]]; then
