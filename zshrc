@@ -1,6 +1,3 @@
-autoload -Uz compinit
-compinit
-
 if [[ -r "$HOME/.powerlevel10k/powerlevel10k.zsh-theme" ]]; then
   source ~/.powerlevel10k/powerlevel10k.zsh-theme
 else
@@ -20,7 +17,14 @@ unamestr=`uname`
 hoststr=`hostname`
 me=`whoami`
 
-# old zsh plugins: bundler, git, rails
+fpath=($HOME/.dotfiles/zsh-plugins-compdef $fpath)
+autoload -Uz compinit
+compinit
+
+source $HOME/.dotfiles/zsh-plugins/bundler.plugin.zsh
+source $HOME/.dotfiles/zsh-plugins/git.plugin.zsh
+source $HOME/.dotfiles/zsh-plugins/rails.plugin.zsh
+
 
 zstyle ":completion:*:commands" rehash 1
 
