@@ -1,45 +1,26 @@
+autoload -Uz compinit
+compinit
+
+if [[ -r "$HOME/.powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source ~/.powerlevel10k/powerlevel10k.zsh-theme
+else
+  echo "PowerLevel 10k not installed. https://github.com/romkatv/powerlevel10k#manual"
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Where Am I?
 platform='unknown'
 unamestr=`uname`
 hoststr=`hostname`
 me=`whoami`
 
-if [[ "$unamestr" == 'Darwin' ]]; then
-  platform='mac'
-  export ZSH_THEME="robbyrussell"
-elif [[ "$hoststr" == 'galena' ]]; then
-  platform='linux'
-  export ZSH_THEME="risto"
-elif [[ "$unamestr" == 'Linux' ]]; then
-  platform='linux'
-  export ZSH_THEME="cloud"
-fi
-
-plugins=(bundler git rails code_cd marked_tab)
-
-# Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
-
-# Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-export DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
-alias millis='python -c "import time; print(int(time.time()*1000))"'
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-
-#------------------------------
-# Settings
-#------------------------------
+# old zsh plugins: bundler, git, rails
 
 zstyle ":completion:*:commands" rehash 1
 
@@ -70,6 +51,8 @@ export DISABLE_SPRING=1
 #------------------------------
 
 alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
+
+alias millis='python -c "import time; print(int(time.time()*1000))"'
 
 if [[ "$unamestr" == 'Darwin' ]]; then
   export EDITOR="vim"
@@ -115,6 +98,14 @@ _t() {
 }
 compdef _t t
 
+c() { cd ~/Code/$1; }
+
+_c() { _files -W ~/Code -/; }
+compdef _c c
+
+_marked_tab() { _files -g "*.md *.markdown"; }
+compdef _marked_tab mark
+
 `which thefuck > /dev/null`
 if [[ $? == 0 ]]; then
   eval $(thefuck --alias)
@@ -137,3 +128,6 @@ fi
 if [[ -r "$HOME/.fzf.zsh" ]]; then
   source "$HOME/.fzf.zsh"
 fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

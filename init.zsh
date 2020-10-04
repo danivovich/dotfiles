@@ -39,6 +39,10 @@ if [ ! -e ~/.zshenv ]; then
   ln -s ~/.dotfiles/zshenv ~/.zshenv
 fi
 
+if [ ! -e ~/.p10k.zsh ]; then
+  ln -s ~/.dotfiles/p10k.zsh ~/.p10k.zsh
+fi
+
 # psql
 if [ ! -e ~/.psqlrc ]; then
   ln -s ~/.dotfiles/psqlrc ~/.psqlrc
