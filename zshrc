@@ -47,6 +47,10 @@ fi
 export EDITOR="vim"
 export PAGER="less"
 export HISTCONTROL=ignorespace:ignoredups
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=99999
+export HISTFILESIZE=999999
+export SAVEHIST=$HISTSIZE
 # F@CK Spring
 export DISABLE_SPRING=1
 
