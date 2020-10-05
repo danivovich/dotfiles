@@ -21,10 +21,11 @@ fpath=($HOME/.dotfiles/zsh-plugins-compdef $fpath)
 autoload -Uz compinit
 compinit
 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+
 source $HOME/.dotfiles/zsh-plugins/bundler.plugin.zsh
 source $HOME/.dotfiles/zsh-plugins/git.plugin.zsh
 source $HOME/.dotfiles/zsh-plugins/rails.plugin.zsh
-
 
 zstyle ":completion:*:commands" rehash 1
 
