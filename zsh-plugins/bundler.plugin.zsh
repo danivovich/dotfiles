@@ -1,3 +1,6 @@
+# From Oh My Zsh
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/LICENSE.txt
+#
 ## Aliases
 
 alias ba="bundle add"

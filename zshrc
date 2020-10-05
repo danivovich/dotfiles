@@ -26,6 +26,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|
 source $HOME/.dotfiles/zsh-plugins/bundler.plugin.zsh
 source $HOME/.dotfiles/zsh-plugins/git.plugin.zsh
 source $HOME/.dotfiles/zsh-plugins/rails.plugin.zsh
+source $HOME/.dotfiles/zsh-plugins/key-bindings.zsh
 
 zstyle ":completion:*:commands" rehash 1
 
@@ -42,16 +43,27 @@ else
 fi
 
 #------------------------------
-# Variables
+# History
 #------------------------------
 
-export EDITOR="vim"
-export PAGER="less"
 export HISTCONTROL=ignorespace:ignoredups
 export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=99999
 export HISTFILESIZE=999999
 export SAVEHIST=$HISTSIZE
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
+
+#------------------------------
+# Variables
+#------------------------------
+
+export EDITOR="vim"
+export PAGER="less"
 # F@CK Spring
 export DISABLE_SPRING=1
 

@@ -1,3 +1,7 @@
+# From Oh My Zsh
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/LICENSE.txt
+#
+
 function _rails_command () {
   if [ -e "bin/stubs/rails" ]; then
     bin/stubs/rails $@

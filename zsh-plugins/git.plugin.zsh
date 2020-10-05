@@ -1,3 +1,6 @@
+# From Oh My Zsh
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/LICENSE.txt
+#
 # Git version checking
 autoload -Uz is-at-least
 git_version="${${(As: :)$(git version 2>/dev/null)}[3]}"
