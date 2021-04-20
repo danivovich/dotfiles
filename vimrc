@@ -90,6 +90,7 @@ set incsearch
 set ignorecase
 set smartcase
 set foldlevel=1
+set nofoldenable
 
 command! W :w
 
@@ -386,14 +387,14 @@ let g:ale_linters.elixir = ['elixir-ls', 'credo']
 let g:ale_linters.ruby = ['rubocop', 'ruby', 'solargraph']
 
 let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
-let g:ale_fixers.javascript = ['eslint', 'prettier']
+"let g:ale_fixers.javascript = ['eslint', 'prettier']
 let g:ale_fixers.html = ['prettier']
 let g:ale_fixers.scss = ['stylelint']
 let g:ale_fixers.css = ['stylelint']
-let g:ale_fixers.elm = ['format']
+"let g:ale_fixers.elm = ['format']
 let g:ale_fixers.ruby = ['rubocop']
 let g:ale_ruby_rubocop_executable = 'bundle'
-let g:ale_fixers.elixir = ['mix_format']
+"let g:ale_fixers.elixir = ['mix_format']
 let g:ale_fixers.xml = ['xmllint']
 
 " Required, tell ALE where to find Elixir LS

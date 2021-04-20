@@ -1,22 +1,41 @@
-[github]
-	user = 
-	token = 
 [user]
-	name = 
-	email = 
+  name = Dan Ivovich
+  email = divovich@gmail.com
 [color]
-	ui = true
+  ui = true
 [alias]
-	stache = stash
-	st = status
-	ci = commit
-	com = commit
-	co = checkout
-	br = branch
-	lol = log --pretty=oneline --abbrev-commit --graph --decorate
+  stache = stash
+  st = status -sb
+  ci = commit -v
+  com = commit -v
+  co = checkout
+  br = branch
+  lol = log --pretty=oneline --abbrev-commit --graph --decorate
 [core]
-	editor = vim 
-	excludesfile = 
-	quotepath = false
+  pager = delta --theme='Solarized (dark)'
+  editor = vim
+  excludesfile = /home/dan/.gitignore
+  quotepath = false
+  autocrlf = input
 [merge]
-	tool = 
+  tool = vimdiff
+;[format]
+  ;pretty = format:%h %an %s
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[pull]
+  ff = only
+[init]
+  defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only --theme='Solarized (dark)'
+[delta]
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
