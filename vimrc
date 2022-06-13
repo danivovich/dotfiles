@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Languages
 Plug 'vim-ruby/vim-ruby'
 Plug 'fatih/vim-go'
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
 Plug 'rust-lang/rust.vim'
@@ -38,7 +38,7 @@ Plug 'tpope/vim-dispatch'
 " utils
 Plug 'scrooloose/nerdcommenter'
 Plug 'coderifous/textobj-word-column.vim'
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 Plug 'sjl/gundo.vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf'
@@ -70,7 +70,7 @@ set laststatus=2
 "set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 set statusline=%<%f\ %h%w%m%r%y%=L:%l/%L\ (%p%%)\ C:%c
 set t_Co=16
-set background=light
+set background=dark
 colorscheme solarized
 
 " don't leave backup files scattered about.

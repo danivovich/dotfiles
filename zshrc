@@ -84,7 +84,6 @@ fi
 alias iexs='iex -S mix'
 alias bundle='nocorrect bundle'
 alias fs='foreman start'
-alias weather='curl "wttr.in/seven valleys pa?muAFnQ"'
 
 #------------------------------
 # Functions
