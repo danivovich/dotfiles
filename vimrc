@@ -19,6 +19,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'pearofducks/ansible-vim'
 Plug 'glench/vim-jinja2-syntax'
+Plug 'hashivim/vim-terraform'
 
 " tpope section
 Plug 'tpope/vim-rake'
