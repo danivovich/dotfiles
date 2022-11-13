@@ -13,7 +13,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'fatih/vim-go'
 " Plug 'plasticboy/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -55,6 +56,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
+
+syntax on
 
 set encoding=utf-8
 
@@ -170,6 +173,11 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,Guardfile
 
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 au FileType go set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
+
+" Elixir file types
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir
 
 " Super nice pipe alignment while defining cucumber tables
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -414,6 +422,8 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
+
+let g:mix_format_on_save = 1
 
 noremap <Leader>ad :ALEGoToDefinition<CR>
 nnoremap <leader>af :ALEFix<cr>
