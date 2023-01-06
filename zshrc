@@ -76,6 +76,7 @@ alias tmux="TERM=screen-256color-bce tmux -u -S /tmp/tmux-sock-$me"
 alias millis='python -c "import time; print(int(time.time()*1000))"'
 
 alias vim='nvim'
+alias view='nvim -M'
 
 if [[ "$unamestr" == 'Darwin' ]]; then
   export EDITOR="vim"
