@@ -13,6 +13,7 @@ fi
 
 #nvim
 if [ ! -e ~/.config/nvim/init.lua ]; then
+  mkdir -p ~/.config/nvim
   ln -s ~/.dotfiles/init.lua ~/.config/nvim/init.lua
 fi
 
