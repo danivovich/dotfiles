@@ -11,6 +11,11 @@ if [ ! -e ~/.gvimrc ]; then
   ln -s ~/.dotfiles/gvimrc ~/.gvimrc
 fi
 
+#nvim
+if [ ! -e ~/.config/nvim/init.lua ]; then
+  ln -s ~/.dotfiles/init.lua ~/.config/nvim/init.lua
+fi
+
 # gemrc
 if [ ! -e ~/.gemrc ]; then
   ln -s ~/.dotfiles/gemrc ~/.gemrc
@@ -47,10 +52,3 @@ fi
 if [ ! -e ~/.psqlrc ]; then
   ln -s ~/.dotfiles/psqlrc ~/.psqlrc
 fi
-
-# Plug install
-cd ~/.dotfiles
-mv vimrc vimrc.bak
-sed 's/colorscheme solarized/" colorscheme solarized/' vimrc.bak > vimrc
-vim +PlugInstall +qall
-mv vimrc.bak vimrc

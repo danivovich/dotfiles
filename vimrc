@@ -1,62 +1,5 @@
 set nocompatible
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-
-" Languages
-Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
-" Plug 'plasticboy/vim-markdown'
-Plug 'kchmck/vim-coffee-script'
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-Plug 'rust-lang/rust.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'pearofducks/ansible-vim'
-Plug 'glench/vim-jinja2-syntax'
-Plug 'hashivim/vim-terraform'
-
-" tpope section
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-cucumber'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-
-" testing help
-Plug 'tpope/vim-dispatch'
-
-" utils
-Plug 'scrooloose/nerdcommenter'
-Plug 'coderifous/textobj-word-column.vim'
-" Plug 'godlygeek/tabular'
-Plug 'sjl/gundo.vim'
-Plug 'ervandew/supertab'
-Plug 'junegunn/fzf'
-Plug 'dense-analysis/ale'
-
-" navigation
-Plug 'mileszs/ack.vim'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
-
-" Themes
-Plug 'altercation/vim-colors-solarized'
-
-call plug#end()
-
 syntax on
 
 set encoding=utf-8
@@ -71,11 +14,12 @@ set cursorline
 set number
 set scrolloff=3
 set laststatus=2
-"set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 set statusline=%<%f\ %h%w%m%r%y%=L:%l/%L\ (%p%%)\ C:%c
 set t_Co=16
 set background=dark
-colorscheme solarized
+colorscheme neodark
+let g:airline_theme='neodark'
+let g:nord_cursor_line_number_background = 1
 
 " don't leave backup files scattered about.
 set updatecount=0
@@ -97,8 +41,6 @@ set foldlevel=1
 set nofoldenable
 
 command! W :w
-
-let mapleader = ","
 
 " fast nav
 map <leader>j 15j<CR>
@@ -389,46 +331,4 @@ let g:rails_gem_projections = {
 " Optional, configure as-you-type completions
 set completeopt=menu,menuone,preview,noselect,noinsert
 
-let g:ale_linters = {}
-let g:ale_linters.scss = ['stylelint']
-let g:ale_linters.css = ['stylelint']
-let g:ale_linters.elixir = ['elixir-ls', 'credo']
-let g:ale_linters.ruby = ['rubocop', 'ruby', 'solargraph']
-
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
-"let g:ale_fixers.javascript = ['eslint', 'prettier']
-let g:ale_fixers.html = ['prettier']
-let g:ale_fixers.scss = ['stylelint']
-let g:ale_fixers.css = ['stylelint']
-"let g:ale_fixers.elm = ['format']
-let g:ale_fixers.ruby = ['rubocop']
-let g:ale_ruby_rubocop_executable = 'bundle'
-"let g:ale_fixers.elixir = ['mix_format']
-let g:ale_fixers.xml = ['xmllint']
-
-" Required, tell ALE where to find Elixir LS
-let g:ale_elixir_elixir_ls_release = expand("~/Code/elixir-ls/rel")
-let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
-let g:ale_sign_column_always = 1
-let g:ale_elixir_credo_strict = 1
-
-let g:ale_completion_enabled = 1
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-
 let g:mix_format_on_save = 1
-
-noremap <Leader>ad :ALEGoToDefinition<CR>
-nnoremap <leader>af :ALEFix<cr>
-noremap <Leader>ar :ALEFindReferences<CR>
-
-"Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
