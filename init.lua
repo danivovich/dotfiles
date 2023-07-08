@@ -54,6 +54,7 @@ require("lazy").setup({
   'joshdick/onedark.vim',
   'KeitaNakamura/neodark.vim',
   'rakr/vim-one',
+  'morhetz/gruvbox',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
