@@ -12,13 +12,13 @@
   br = branch
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
 [core]
-  pager = delta --theme='Solarized (dark)'
-  editor = vim
+  pager = delta --theme='gruvbox-dark'
+  editor = nvim
   excludesfile = /home/dan/.gitignore
   quotepath = false
   autocrlf = input
 [merge]
-  tool = vimdiff
+  tool = nvim -d
 ;[format]
   ;pretty = format:%h %an %s
 [filter "lfs"]
