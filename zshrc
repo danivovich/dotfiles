@@ -62,7 +62,7 @@ setopt share_history          # share command history data
 # Variables
 #------------------------------
 
-export EDITOR="vim"
+export EDITOR="nvim"
 export PAGER="less"
 # F@CK Spring
 export DISABLE_SPRING=1
@@ -77,10 +77,6 @@ alias millis='python -c "import time; print(int(time.time()*1000))"'
 
 alias vim='nvim'
 alias view='nvim -M'
-
-if [[ "$unamestr" == 'Darwin' ]]; then
-  export EDITOR="vim"
-fi
 
 alias iexs='iex -S mix'
 alias bundle='nocorrect bundle'
