@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ","
 
 require("lazy").setup({
-  'elixir-editors/vim-elixir',
+  --'elixir-editors/vim-elixir',
   'vim-ruby/vim-ruby',
   'fatih/vim-go',
   'rust-lang/rust.vim',
