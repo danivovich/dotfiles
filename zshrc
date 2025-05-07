@@ -30,6 +30,12 @@ source $HOME/.dotfiles/zsh-plugins/key-bindings.zsh
 
 zstyle ":completion:*:commands" rehash 1
 
+
+`which /opt/homebrew/bin/brew > /dev/null`
+if [[ $? == 0 ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 `which keychain > /dev/null`
 if [[ $? == 0 ]]; then
   eval `keychain --eval --agents ssh --inherit any --quiet --quick`
