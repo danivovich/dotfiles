@@ -50,9 +50,6 @@ map <leader>k 15k<CR>
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 
-" NERDTree Setup
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-
 " ctrlp.vim
 map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<CR>
@@ -117,9 +114,9 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 au FileType go set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
 
 " Elixir file types
-au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
-au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
-au BufRead,BufNewFile mix.lock set filetype=elixir
+"au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+"au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+"au BufRead,BufNewFile mix.lock set filetype=elixir
 
 " Super nice pipe alignment while defining cucumber tables
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -134,122 +131,6 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Running tests
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" In Place Running
-
-function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.py\)$') != -1
-    if in_test_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number)
-endfunction
-
-function! SetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
-endfunction
-
-function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    if expand("%") != ""
-      :w
-    end
-    if match(a:filename, '\.feature$') != -1
-        exec ":!script/features " . a:filename
-    else
-        " First choice: project-specific test script
-        if filereadable("script/test")
-            exec ":!script/test " . a:filename
-        " Fall back to the .test-commands pipe if available, assuming someone
-        " is reading the other side and running the commands
-        elseif filewritable(".test-commands")
-          let cmd = 'rspec --color --format progress --require "~/lib/vim_rspec_formatter" --format VimFormatter --out tmp/quickfix'
-          exec ":!echo " . cmd . " " . a:filename . " > .test-commands"
-
-          " Write an empty string to block until the command completes
-          sleep 100m " milliseconds
-          :!echo > .test-commands
-          redraw!
-        " Fall back to a blocking test run with Bundler
-        elseif filereadable("Gemfile")
-            exec ":!bundle exec rspec --color " . a:filename
-        " If we see python-looking tests, assume they should be run with Nose
-        elseif strlen(glob("test/**/*.py") . glob("tests/**/*.py"))
-            exec "!nosetests " . a:filename
-        " Fall back to a normal blocking test run
-        else
-            exec ":!rspec --color " . a:filename
-        end
-    end
-endfunction
-
-map <leader>u :call RunTestFile()<cr>
-map <leader>U :call RunNearestTest()<cr>
-map <leader>a :call RunTests('')<cr>
-
-" Dispatch Running
-
-function! DispatchRunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.py\)$') != -1
-    if in_test_file
-        call DispatchSetTestFile()
-    elseif !exists("t:dispatch_test_file")
-        return
-    end
-    call DispatchRunTests(t:dispatch_test_file . command_suffix)
-endfunction
-
-function! DispatchRunNearestTest()
-    let spec_line_number = line('.')
-    call DispatchRunTestFile(":" . spec_line_number)
-endfunction
-
-function! DispatchSetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:dispatch_test_file=@%
-endfunction
-
-function! DispatchRunTests(filename)
-    " Write the file and run tests for the given filename
-    if expand("%") != ""
-      :w
-    end
-    if match(a:filename, '\.feature$') != -1
-        exec ":Focus cucumber " . a:filename
-    else
-        exec ":Focus rspec --color " . a:filename
-    end
-    exec ":Dispatch"
-endfunction
-
-map <leader>t :call DispatchRunTestFile()<cr>
-map <leader>T :call DispatchRunNearestTest()<cr>
 
 " whitespace killer http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 set list
@@ -332,3 +213,6 @@ let g:rails_gem_projections = {
 set completeopt=menu,menuone,preview,noselect,noinsert
 
 let g:mix_format_on_save = 1
+let g:augment_workspace_folders = []
+
+autocmd VimEnter * Copilot disable

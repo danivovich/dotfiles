@@ -15,6 +15,8 @@ vim.g.mapleader = ","
 
 require("lazy").setup({
   --'elixir-editors/vim-elixir',
+  --'augmentcode/augment.vim',
+  'github/copilot.vim',
   'vim-ruby/vim-ruby',
   'fatih/vim-go',
   'rust-lang/rust.vim',
@@ -43,13 +45,13 @@ require("lazy").setup({
   'junegunn/fzf',
   'vim-airline/vim-airline',
   'vim-airline/vim-airline-themes',
-  'mileszs/ack.vim',
+  --'mileszs/ack.vim',
   'jlanzarotta/bufexplorer',
-  'scrooloose/nerdtree',
+  --'scrooloose/nerdtree',
   'kien/ctrlp.vim',
   'altercation/vim-colors-solarized',
   'arcticicestudio/nord-vim',
-  'ajmwagar/vim-deus',
+  --'ajmwagar/vim-deus',
   'drewtempelmeyer/palenight.vim',
   'joshdick/onedark.vim',
   'KeitaNakamura/neodark.vim',
@@ -65,47 +67,84 @@ require("lazy").setup({
   'hrsh7th/cmp-vsnip',
   'sheerun/vim-polyglot',
   {
-    "elixir-tools/elixir-tools.nvim",
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      local elixir = require("elixir")
-      local elixirls = require("elixir.elixirls")
-
-      elixir.setup {
-        nextls = {enable = false},
-        credo = {enable = true},
-        elixirls = {
-          enable = true,
-          settings = elixirls.settings {
-            dialyzerEnabled = true,
-            enableTestLenses = true,
-          },
-          on_attach = function(client, bufnr)
-            local opts = { noremap=true, silent=true }
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-            vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", opts)
-            vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", opts)
-            vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", opts)
-          end,
-        }
-      }
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
     },
   }
+  --{
+    --"elixir-tools/elixir-tools.nvim",
+    --version = "*",
+    --event = { "BufReadPre", "BufNewFile" },
+    --config = function()
+      --local elixir = require("elixir")
+      --local elixirls = require("elixir.elixirls")
+
+      --elixir.setup {
+        --nextls = {enable = false},
+        --credo = {enable = true},
+        --elixirls = {
+          --enable = true,
+          --settings = elixirls.settings {
+            --dialyzerEnabled = true,
+            --enableTestLenses = true,
+          --},
+          --on_attach = function(client, bufnr)
+            --local opts = { noremap=true, silent=true }
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+            --vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+            --vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", opts)
+            --vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", opts)
+            --vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", opts)
+          --end,
+        --}
+      --}
+    --end,
+    --dependencies = {
+      --"nvim-lua/plenary.nvim",
+    --},
+  --}
 })
 
 local cmp = require'cmp'
@@ -157,5 +196,21 @@ cmp.setup({
     { name = 'buffer' }
   })
 })
+
+if vim.fn.executable('rg') == 1 then
+  vim.o.grepprg = 'rg --vimgrep'
+end
+
+if vim.fn.executable('elixir-ls') == 1 then
+  require'lspconfig'.elixirls.setup{
+    cmd = { "elixir-ls" };
+  }
+end
+
+if vim.fn.executable('./bin/ruby-lsp') == 1 then
+  require'lspconfig'.ruby_lsp.setup{
+    cmd = { "./bin/ruby-lsp" };
+  }
+end
 
 vim.cmd('source ~/.vimrc')
