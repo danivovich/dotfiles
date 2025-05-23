@@ -38,7 +38,7 @@ fi
 
 `which keychain > /dev/null`
 if [[ $? == 0 ]]; then
-  eval `keychain --eval --agents ssh --inherit any --quiet --quick`
+  eval `keychain --eval --quiet --quick`
   function add_all_ssh_keys()
   {
     ssh-add $(grep -l PRIVATE ~/.ssh)
