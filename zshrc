@@ -138,12 +138,11 @@ fi
 #------------------------------
 # Local settings
 #------------------------------
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
-if [[ -r "$HOME/.asdf/asdf.sh" ]]; then
- source $HOME/.asdf/asdf.sh
- fpath=(${ASDF_DIR}/completions $fpath)
- autoload -Uz compinit && compinit
-fi
+fpath=($ASDF_DATA_DIR/completions $fpath)
+autoload -Uz compinit && compinit
 
 if [[ -r "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
