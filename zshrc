@@ -140,6 +140,7 @@ fi
 #------------------------------
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 fpath=($ASDF_DATA_DIR/completions $fpath)
 autoload -Uz compinit && compinit
