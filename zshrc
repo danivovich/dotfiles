@@ -30,23 +30,6 @@ source $HOME/.dotfiles/zsh-plugins/key-bindings.zsh
 
 zstyle ":completion:*:commands" rehash 1
 
-`which /opt/homebrew/bin/brew > /dev/null`
-if [[ $? == 0 ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-`which keychain > /dev/null`
-if [[ $? == 0 ]]; then
-  eval `keychain --eval --quiet --quick`
-  function add_all_ssh_keys()
-  {
-    ssh-add $(grep -l PRIVATE ~/.ssh)
-  }
-  eval "$(ssh-add -l > /dev/null || add_all_ssh_keys )"
-else
-  echo "Keychain not installed"
-fi
-
 #------------------------------
 # History
 #------------------------------
@@ -129,38 +112,45 @@ compdef _c c
 _marked_tab() { _files -g "*.md *.markdown"; }
 compdef _marked_tab mark
 
+#------------------------------
+# Tools
+#------------------------------
+
+`which /opt/homebrew/bin/brew > /dev/null`
+if [[ $? == 0 ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+`which keychain > /dev/null`
+if [[ $? == 0 ]]; then
+  eval `keychain --eval --quiet --quick`
+  function add_all_ssh_keys()
+  {
+    ssh-add $(grep -l PRIVATE ~/.ssh)
+  }
+  eval "$(ssh-add -l > /dev/null || add_all_ssh_keys )"
+else
+  echo "Keychain not installed"
+fi
+
 `which thefuck > /dev/null`
 if [[ $? == 0 ]]; then
   eval $(thefuck --alias)
 fi
 
-#------------------------------
-# Local settings
-#------------------------------
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
-export PATH="$PATH":"$HOME/.pub-cache/bin"
+`which asdf > /dev/null`
+if [[ $? == 0 ]]; then
+  export ASDF_DATA_DIR="$HOME/.asdf"
+  export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
-fpath=($ASDF_DATA_DIR/completions $fpath)
-autoload -Uz compinit && compinit
-
-if [[ -r "$HOME/.zshrc.local" ]]; then
-  source "$HOME/.zshrc.local"
+  fpath=($ASDF_DATA_DIR/completions $fpath)
+  autoload -Uz compinit && compinit
 fi
 
-if [[ -r "$HOME/.fzf.zsh" ]]; then
-  source "$HOME/.fzf.zsh"
+`which rbenv > /dev/null`
+if [[ $? == 0 ]]; then
+  eval "$(rbenv init -)"
 fi
-
-# 2026 Development Changes
-export PATH="$HOME/.rover/bin:$PATH"
-
-eval "$(rbenv init -)"
-
-export PATH="$HOME/go/bin:$PATH"
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH:$GOBIN
 
 # If 1Password CLI and just is installed, make sure its logged in before running just
 `which op > /dev/null`
@@ -173,6 +163,33 @@ if [[ $? == 0 ]]; then
     }
     alias just="prep_op && just"
   fi
+fi
+
+#------------------------------
+# Paths
+#------------------------------
+
+if [[ -e "$HOME/.pub-cache/bin" ]]; then
+  export PATH="$PATH":"$HOME/.pub-cache/bin"
+fi
+
+if [[ -r "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local"
+fi
+
+if [[ -r "$HOME/.fzf.zsh" ]]; then
+  source "$HOME/.fzf.zsh"
+fi
+
+if [[ -e "$HOME/.rover/bin" ]]; then
+  export PATH="$HOME/.rover/bin:$PATH"
+fi
+
+if [[ -e "$HOME/go" ]]; then
+  export PATH="$HOME/go/bin:$PATH"
+  export GOPATH=$HOME/go
+  export GOBIN=$GOPATH/bin
+  export PATH=$PATH:$GOPATH:$GOBIN
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
