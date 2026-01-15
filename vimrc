@@ -211,8 +211,3 @@ let g:rails_gem_projections = {
 
 " Optional, configure as-you-type completions
 set completeopt=menu,menuone,preview,noselect,noinsert
-
-let g:mix_format_on_save = 1
-let g:augment_workspace_folders = []
-
-autocmd VimEnter * Copilot disable

@@ -30,7 +30,6 @@ source $HOME/.dotfiles/zsh-plugins/key-bindings.zsh
 
 zstyle ":completion:*:commands" rehash 1
 
-
 `which /opt/homebrew/bin/brew > /dev/null`
 if [[ $? == 0 ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -43,7 +42,7 @@ if [[ $? == 0 ]]; then
   {
     ssh-add $(grep -l PRIVATE ~/.ssh)
   }
-  alias ssh="(ssh-add -l > /dev/null || add_all_ssh_keys ) && ssh"
+  eval "$(ssh-add -l > /dev/null || add_all_ssh_keys )"
 else
   echo "Keychain not installed"
 fi
@@ -151,6 +150,29 @@ fi
 
 if [[ -r "$HOME/.fzf.zsh" ]]; then
   source "$HOME/.fzf.zsh"
+fi
+
+# 2026 Development Changes
+export PATH="$HOME/.rover/bin:$PATH"
+
+eval "$(rbenv init -)"
+
+export PATH="$HOME/go/bin:$PATH"
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH:$GOBIN
+
+# If 1Password CLI and just is installed, make sure its logged in before running just
+`which op > /dev/null`
+if [[ $? == 0 ]]; then
+  `which just > /dev/null`
+  if [[ $? == 0 ]]; then
+    function prep_op()
+    {
+      eval "$(op signin)"
+    }
+    alias just="prep_op && just"
+  fi
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
